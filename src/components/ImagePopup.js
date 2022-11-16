@@ -12,7 +12,7 @@ function ImagePopup(props) {
                 </button>
                 <img
                     src={`${props.card ? props.card.img : '#'}`} 
-                    alt={props.card.title}
+                    alt="Изображение"
                     className="popup__image" 
                 />
                 <h2 className="popup__subtitle">{`${props.card ? props.card.title : ''}`}</h2>
