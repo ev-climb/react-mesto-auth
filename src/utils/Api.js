@@ -1,5 +1,4 @@
-  
-  class Api {
+class Api {
     constructor(options) {
       this._url = options.url;
       this._headers = options.headers;
@@ -69,29 +68,21 @@
         .then(this._handleResponse);
       }
 
-    addLike(id){
-        return fetch(`${this._url}/v1/cohort-52/cards/${id}/likes`, {
-          method: 'PUT',
-          headers: this._headers,
-        })
-        .then(this._handleResponse);
-      }
-      
-    deleteLike(id){
-        return fetch(`${this._url}/v1/cohort-52/cards/${id}/likes`, {
-          method: 'DELETE',
-          headers: this._headers,
-        })
-        .then(this._handleResponse);
-      }
+    changeLikeStatus(id, isLiked) {
+      return fetch(`${this._url}/v1/cohort-52/cards/${id}/likes`, {
+        method: isLiked ? 'PUT' : 'DELETE',
+        headers: this._headers,
+      })
+      .then(this._handleResponse);
     }
+  }
 
-    const api = new Api({
-      url: 'https://mesto.nomoreparties.co/',
-      headers: {
-        authorization: 'd078071c-2838-4a0d-a4b4-dfd0e6c1822f',
-        'Content-Type': 'application/json'
-      }
-    });
+  const api = new Api({
+    url: 'https://mesto.nomoreparties.co/',
+    headers: {
+      authorization: 'd078071c-2838-4a0d-a4b4-dfd0e6c1822f',
+      'Content-Type': 'application/json'
+    }
+  });
 
-    export default api;
+  export default api;
