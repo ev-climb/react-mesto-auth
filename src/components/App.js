@@ -17,6 +17,7 @@ function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
     const [selectedCard, setSelectedCard] = useState(null);
+    const [selectedCardForDel, setSelectedCardForDel] = useState(null);
     const [currentUser, setCurrentUser] = useState({});
     const [cards, setCards] = useState([]);
 
@@ -30,8 +31,8 @@ function App() {
 
     useEffect(() =>{
         api.getUser()
-        .then((name, about, avatar) => {
-            setCurrentUser(name, about, avatar)
+        .then((data) => {
+            setCurrentUser(data)
         })
         .catch((err) => console.log(err))
     }, [])
@@ -46,6 +47,7 @@ function App() {
     } 
 
     function handleCardDelete(card) {
+        console.log(card);
         api.deleteCard(card._id)
            .then(() => {
             setCards((state) => state.filter((c) => c._id !== card._id))
@@ -100,8 +102,8 @@ function App() {
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
-        setSelectedCard(false);
         setIsConfirmPopupOpen(false);
+        setSelectedCard(null);
     }
 
     const handleCardClick = (link, name) => {
@@ -110,7 +112,11 @@ function App() {
           img: link,
           title: name
         });
-      }
+    }
+
+    const handleCardForDel = (card) => {
+        setSelectedCardForDel({card});
+    }
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -121,6 +127,7 @@ function App() {
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
                     onCardClick={handleCardClick}
+                    onCardSelect={handleCardForDel}
                     onCardLike={handleCardLike}
                     onConfirmPopup={handleConfirmClick}
                     cards={cards}
@@ -149,7 +156,7 @@ function App() {
                     isOpen={isConfirmPopupOpen}
                     onClose={closeAllPopups}
                     onCardDelete={handleCardDelete}
-                    card={selectedCard}
+                    card={selectedCardForDel}
                 />
             </div>
         </CurrentUserContext.Provider>

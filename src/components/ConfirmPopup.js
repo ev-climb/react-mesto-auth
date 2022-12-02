@@ -4,7 +4,7 @@ function ConfirmPopup(props){
     
     function handleDeleteClick(evt) {
         evt.preventDefault();
-        props.onCardDelete(props.card.img);
+        props.onCardDelete(props.card.card);
         props.onClose()    
     }
 
