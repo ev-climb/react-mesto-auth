@@ -10,3 +10,8 @@
 React, JS, CSS3, HTML5
 
 https://ev-climb.github.io/mesto-react/
+
+
+### Статус
+---
+В разработке
