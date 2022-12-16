@@ -1,0 +1,13 @@
+.popup__container_register-info {
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  @media screen and (max-width: 770px) {
+    .popup__container_register-info {
+      min-width: 280px;
+      min-height: 308px;
+    }
+  }

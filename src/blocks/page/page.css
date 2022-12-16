@@ -11,8 +11,8 @@
     background-color: #000;
   }
   
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 630px) {
     .page {
-      padding-top: 28px;
+      padding-top: 40px;
     }
   }

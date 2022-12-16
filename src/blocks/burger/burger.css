@@ -1,0 +1,22 @@
+.burger {
+    display: none;
+  }
+  
+  @media screen and (max-width: 630px) {
+    .burger {
+      display: block;
+      position: absolute;
+      right: 0px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      height: 24px;
+      bottom: 30px;
+    }
+  }
+
+  @media screen and (max-width: 430px) {
+    .burger {
+      right: 30px;
+    }
+  }
