@@ -154,6 +154,7 @@ function App() {
             setIsInfoTooltip(true);
             setIsProve(true);
             setIsLoggedIn(true);
+            setUserEmail(email);
             history.push("/");
           })
           .catch((err) => {

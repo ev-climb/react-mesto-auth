@@ -12,14 +12,14 @@ class Api {
       }
 
     getUser(){
-        return fetch(`${this._url}/v1/cohort-52/users/me`, {
+        return fetch(`${this._url}users/me`, {
           headers: this._headers
         })
         .then(this._handleResponse)
         }
     
     editUser(name, about) {
-        return fetch(`${this._url}/v1/cohort-52/users/me`, {
+        return fetch(`${this._url}users/me`, {
           method: 'PATCH',
           headers: this._headers,
           body: JSON.stringify({
@@ -31,7 +31,7 @@ class Api {
       }
 
     editAvatar(avatar) {
-        return fetch(`${this._url}/v1/cohort-52/users/me/avatar`, {
+        return fetch(`${this._url}users/me/avatar`, {
           method: 'PATCH',
           headers: this._headers,
           body: JSON.stringify({
@@ -42,14 +42,14 @@ class Api {
       }
 
     getAllCards(){
-        return fetch(`${this._url}/v1/cohort-52/cards`, {
+        return fetch(`${this._url}cards`, {
             headers: this._headers
         })
         .then(this._handleResponse)
     }
 
     addCard(name, link){
-        return fetch(`${this._url}/v1/cohort-52/cards`, {
+        return fetch(`${this._url}cards`, {
           method: 'POST',
           headers: this._headers,
           body: JSON.stringify({
@@ -61,7 +61,7 @@ class Api {
       }
 
     deleteCard(id) {
-        return fetch(`${this._url}/v1/cohort-52/cards/${id}`, {
+        return fetch(`${this._url}cards/${id}`, {
           method: "DELETE",
           headers: this._headers,
         })
@@ -69,7 +69,7 @@ class Api {
       }
 
     changeLikeStatus(id, isLiked) {
-      return fetch(`${this._url}/v1/cohort-52/cards/${id}/likes`, {
+      return fetch(`${this._url}cards/${id}/likes`, {
         method: isLiked ? 'PUT' : 'DELETE',
         headers: this._headers,
       })
@@ -78,7 +78,7 @@ class Api {
   }
 
   const api = new Api({
-    url: 'https://mesto.nomoreparties.co/',
+    url: 'https://mesto.nomoreparties.co/v1/cohort-52/',
     headers: {
       authorization: 'd078071c-2838-4a0d-a4b4-dfd0e6c1822f',
       'Content-Type': 'application/json'

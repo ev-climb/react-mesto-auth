@@ -2,27 +2,23 @@ import { useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props) {
-  const[cardName, setCardName] = useState("");
-  const[cardLink, setCardLink] = useState("");
+
+  const [formValues, setFormValues] = useState({ name: "", link: "" });
 
   useEffect(() => {
-    setCardName("");
-    setCardLink("");
+    setFormValues({ name: "", link: "" });
   }, [props.isOpen]);
 
-  function handleSetCardName(evt) {
-    setCardName(evt.target.value);
+  const handleChange = (evt) => {
+    const {name, value} = evt.target;
+    setFormValues(prevState => ({ ...prevState, [name]: value }));
   }
-
-  function handleSetCardLink(evt) {
-    setCardLink(evt.target.value);
-  } 
 
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onAddPlace({
-        name: cardName,
-        link: cardLink,
+        name: formValues.name,
+        link: formValues.link,
     })
   }
 
@@ -37,13 +33,13 @@ function AddPlacePopup(props) {
         children={
             <>
                 <label className="popup__form-field">
-                    <input className="popup__input popup__input_place" id="place-input" name="place" required
-                        placeholder="Название" type="text" maxLength="30" minLength="2" onChange={handleSetCardName} value={cardName}/>
+                    <input className="popup__input popup__input_place" id="place-input" name="name" required
+                        placeholder="Название" type="text" maxLength="30" minLength="2" onChange={handleChange} value={formValues.name}/>
                     <span className="popup__input-error place-input-error"></span>
                 </label>
                 <label className="popup__form-field">
                     <input className="popup__input popup__input_link" id="link-input" name="link" required
-                        placeholder="Ссылка на картинку" type="url" onChange={handleSetCardLink} value={cardLink}/>
+                        placeholder="Ссылка на картинку" type="url" onChange={handleChange} value={formValues.link}/>
                     <span className="popup__input-error link-input-error"></span>
                 </label>
             </>

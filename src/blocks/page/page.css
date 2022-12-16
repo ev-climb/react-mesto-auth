@@ -1,5 +1,6 @@
 .page {
     min-width: 320px;
+    height: 100%;
     padding-top: 45px;
     font-family: inter, Arial, sans-serif;
     -moz-osx-font-smoothing: grayscale;

@@ -22,18 +22,19 @@ function Register({ onRegister }) {
 
     const { email, password } = state;
 
-    onRegister(email, password)
-      .then(() => {
-        setState(initValues);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+    onRegister(email, password);
+    // onRegister(email, password)
+    //   .then(() => {
+    //     setState(initValues);
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Ошибка: ${err}`);
 
-        setState((old) => ({
-          ...old,
-          message: "Что-то пошло не так!",
-        }));
-      });
+    //     setState((old) => ({
+    //       ...old,
+    //       message: "Что-то пошло не так!",
+    //     }));
+    //   });
   }
 
   return (

@@ -21,19 +21,19 @@ function Login({ onLogin }) {
 
     const { email, password } = state;
     if (!email || !password) return;
-
     onLogin(email, password)
-      .then(() => {
-        setState(initValues);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+    // onLogin(email, password)
+    //   .then(() => {
+    //     setState(initValues);
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Ошибка: ${err}`);
 
-        setState((old) => ({
-          ...old,
-          message: "Что-то пошло не так!",
-        }));
-      });
+    //     setState((old) => ({
+    //       ...old,
+    //       message: "Что-то пошло не так!",
+    //     }));
+    //   });
   }
 
   return (
