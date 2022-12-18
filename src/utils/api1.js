@@ -86,4 +86,3 @@ class Api {
   });
 
   export default api;
-  // изменил название файла
